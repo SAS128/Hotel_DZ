@@ -28,6 +28,9 @@
                 <option value="true">Пользователь</option>
             </select>
         </div>
+        <div>
+            <button type="submit">Вход в отель</button>
+        </div>
     </form>
 </body>
 </html>
