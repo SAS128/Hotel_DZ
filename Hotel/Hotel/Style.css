@@ -1,0 +1,12 @@
+﻿body {
+    background: url(https://fainaidea.com/wp-content/uploads/2015/07/bg1280_381744.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+#rsvpform {
+    color: black;
+    margin-top: 2%;
+    margin-left: 35%;
+    margin-right: 47%;
+    background-color: white;
+}

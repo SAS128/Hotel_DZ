@@ -67,10 +67,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Login_Hotel.aspx" />
+    <Content Include="Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuestResponse.cs" />
+    <Compile Include="Login_Hotel.aspx.cs">
+      <DependentUpon>Login_Hotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login_Hotel.aspx.designer.cs">
+      <DependentUpon>Login_Hotel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseRepository.cs" />
   </ItemGroup>
