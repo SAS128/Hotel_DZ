@@ -70,6 +70,7 @@
     <Content Include="Login_Hotel.aspx" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
+    <Content Include="WebRegistr.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuestResponse.cs" />
@@ -82,6 +83,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseRepository.cs" />
+    <Compile Include="WebRegistr.aspx.cs">
+      <DependentUpon>WebRegistr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebRegistr.aspx.designer.cs">
+      <DependentUpon>WebRegistr.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
