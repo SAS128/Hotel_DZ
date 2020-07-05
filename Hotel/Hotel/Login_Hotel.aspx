@@ -21,7 +21,7 @@
          <div>
             <label>Пароль</label><input type="text" id="password" runat="server"/>
         </div>
-         -  <div>
+          <div>
             <label>Укажите ваш статус входа</label>
             <select id="Logical_parts" runat="server">
                 <option value="">Админ</option>

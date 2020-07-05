@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserTableSet" EntityType="Model1.UserTable" />
+          <EntitySet Name="LoginTableSet" EntityType="Model1.LoginTable" />
+          <EntitySet Name="PasswordTableSet" EntityType="Model1.PasswordTable" />
+          <AssociationSet Name="LoginTableUserTable" Association="Model1.LoginTableUserTable">
+            <End Role="LoginTable" EntitySet="LoginTableSet" />
+            <End Role="UserTable" EntitySet="UserTableSet" />
+          </AssociationSet>
+          <AssociationSet Name="PasswordTableLoginTable" Association="Model1.PasswordTableLoginTable">
+            <End Role="PasswordTable" EntitySet="PasswordTableSet" />
+            <End Role="LoginTable" EntitySet="LoginTableSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <NavigationProperty Name="LoginTable" Relationship="Model1.LoginTableUserTable" FromRole="UserTable" ToRole="LoginTable" />
+          <Property Name="LoginTableId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="Model1.LoginTableUserTable" FromRole="LoginTable" ToRole="UserTable" />
+          <NavigationProperty Name="PasswordTable" Relationship="Model1.PasswordTableLoginTable" FromRole="LoginTable" ToRole="PasswordTable" />
+          <Property Name="PasswordTableId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PasswordTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="LoginTable" Relationship="Model1.PasswordTableLoginTable" FromRole="PasswordTable" ToRole="LoginTable" />
+        </EntityType>
+        <Association Name="LoginTableUserTable">
+          <End Type="Model1.LoginTable" Role="LoginTable" Multiplicity="1" />
+          <End Type="Model1.UserTable" Role="UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="LoginTableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PasswordTableLoginTable">
+          <End Type="Model1.PasswordTable" Role="PasswordTable" Multiplicity="1" />
+          <End Type="Model1.LoginTable" Role="LoginTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PasswordTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoginTable">
+              <PropertyRef Name="PasswordTableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container1" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

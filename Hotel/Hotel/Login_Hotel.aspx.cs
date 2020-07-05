@@ -11,14 +11,11 @@ namespace Hotel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Response.Redirect("http://.../about.aspx");
+
             if (IsPostBack)
             {
-                GuestResponse rsvp = new GuestResponse();
-                if (TryUpdateModel(rsvp, new FormValueProvider(ModelBindingExecutionContext)))
-                {
-                    ResponseRepository.GetRepository().AddResponse(rsvp);
-
-                }
+                Response.Redirect("WebRegistr.aspx");
             }
         }
     }
